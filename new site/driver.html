@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Driver Page</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; }
+        .container { max-width: 500px; margin: 0 auto; padding: 20px; }
+        label { display: block; margin: 10px 0 5px; }
+        input[type="text"], input[type="submit"] { width: 100%; padding: 10px; margin-top: 10px; }
+        .error { color: red; font-size: 0.9em; }
+        .home-button { margin-top: 20px; }
+        .image-placeholder { width: 100%; height: auto; max-width: 200px; margin-bottom: 20px; }
+    </style>
+    <script>
+        function validateDriverForm() {
+            const name = document.getElementById("driverName").value;
+            const email = document.getElementById("driverEmail").value;
+            let isValid = true;
+
+            document.getElementById("errorName").innerText = "";
+            document.getElementById("errorEmail").innerText = "";
+
+            if (name === "") {
+                document.getElementById("errorName").innerText = "Name is required.";
+                isValid = false;
+            }
+
+            if (email === "") {
+                document.getElementById("errorEmail").innerText = "Email is required.";
+                isValid = false;
+            } else if (!/^\S+@\S+\.\S+$/.test(email)) {
+                document.getElementById("errorEmail").innerText = "Please enter a valid email.";
+                isValid = false;
+            }
+
+            return isValid;
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h2>Driver Sign-Up</h2>
+        <img src="https://via.placeholder.com/200" alt="Driver Page Image" class="image-placeholder">
+        <form onsubmit="return validateDriverForm()">
+            <label for="driverName">Name:</label>
+            <input type="text" id="driverName" name="driverName">
+            <div class="error" id="errorName"></div>
+
+            <label for="driverEmail">Email:</label>
+            <input type="text" id="driverEmail" name="driverEmail">
+            <div class="error" id="errorEmail"></div>
+
+            <input type="submit" value="Submit">
+<h3>Existing Driver? Log In</h3>
+            <form id="driver-login-form">
+                <label for="driver-login-email">Email:</label>
+                <input type="email" id="driver-login-email" name="driver-login-email" required>
+
+                <label for="driver-login-password">Password:</label>
+                <input type="password" id="driver-login-password" name="driver-login-password" required>
+
+                <button type="submit">Log In</button>
+
+        </form>
+        
+        <button class="home-button" onclick="window.location.href='index.html'">Home</button>
+    </div>
+</body>
+</html>
