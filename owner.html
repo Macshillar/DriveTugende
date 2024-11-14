@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Owner Page</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; }
+        .container { max-width: 500px; margin: 0 auto; padding: 20px; }
+        label { display: block; margin: 10px 0 5px; }
+        input[type="text"], input[type="submit"], input[type="file"] { width: 100%; padding: 10px; margin-top: 10px; }
+        .error { color: red; font-size: 0.9em; }
+        .home-button { margin-top: 20px; }
+        .image-placeholder { width: 100%; height: auto; max-width: 200px; margin-bottom: 20px; }
+        .preview { max-width: 200px; margin-top: 20px; border: 1px solid #ddd; border-radius: 8px; }
+    </style>
+    <script>
+        function validateOwnerForm() {
+            const name = document.getElementById("ownerName").value;
+            const email = document.getElementById("ownerEmail").value;
+            let isValid = true;
+
+            document.getElementById("errorName").innerText = "";
+            document.getElementById("errorEmail").innerText = "";
+
+            if (name === "") {
+                document.getElementById("errorName").innerText = "Name is required.";
+                isValid = false;
+            }
+
+            if (email === "") {
+                document.getElementById("errorEmail").innerText = "Email is required.";
+                isValid = false;
+            } else if (!/^\S+@\S+\.\S+$/.test(email)) {
+                document.getElementById("errorEmail").innerText = "Please enter a valid email.";
+                isValid = false;
+            }
+
+            return isValid;
+        }
+
+        function previewImage() {
+            const fileInput = document.getElementById("carImage");
+            const preview = document.getElementById("imagePreview");
+            const file = fileInput.files[0];
+
+            if (file) {
+                // Validate file type
+                if (!file.type.startsWith("image/")) {
+                    alert("Please upload a valid image file.");
+                    fileInput.value = "";  // Clear the file input
+                    preview.src = "";  // Clear preview
+                    return;
+                }
+
+                // Show preview
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    preview.src = e.target.result;
+                };
+                reader.readAsDataURL(file);
+            } else {
+                preview.src = "";  // Clear preview if no file selected
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h2>Car Owner Sign-Up</h2>
+        <img src="https://via.placeholder.com/200" alt="Owner Page Image" class="image-placeholder">
+
+        <form onsubmit="return validateOwnerForm()">
+            <label for="ownerName">Name:</label>
+            <input type="text" id="ownerName" name="ownerName">
+            <div class="error" id="errorName"></div>
+
+            <label for="ownerEmail">Email:</label>
+            <input type="text" id="ownerEmail" name="ownerEmail">
+            <div class="error" id="errorEmail"></div>
+
+            <!-- Image Upload Section -->
+            <label for="carImage">Upload Your  Car Image:</label>
+            <input type="file" id="carImage" name="carImage" accept="image/*" onchange="previewImage()">
+            <img id="imagePreview" src="" alt="Image Preview" class="preview">
+
+            <input type="submit" value="Submit">
+        </form>
+ <h2>Existing Car Owner? Log In</h2>
+            <form id="owner-login-form">
+                <label for="owner-login-email">Email:</label>
+                <input type="email" id="owner-login-email" name="owner-login-email" required>
+
+                <label for="owner-login-password">Password:</label>
+                <input type="password" id="owner-login-password" name="owner-login-password" required>
+
+                <button type="submit">Log In</button>
+            </form>
+<h2>List Your Car</h2>
+            <form id="car-listing-form">
+                <label for="car-make">Car Make:</label>
+                <input type="text" id="car-make" name="car-make" required>
+
+                <label for="car-model">Car Model:</label>
+                <input type="text" id="car-model" name="car-model" required>
+
+                <label for="car-year">Car Year:</label>
+                <input type="number" id="car-year" name="car-year" required>
+
+                <label for="car-price">Price per Week (ugx):</label>
+                <input type="number" id="car-price" name="car-price" required>
+
+                <button type="submit">List Car</button>
+            </form>
+
+
+
+        <button class="home-button" onclick="window.location.href='index.html'">Home</button>
+    </div>
+</body>
+</html>

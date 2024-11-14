@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Link Drivers and Car Owners</title>
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            margin: 0; 
+            padding: 0; 
+            display: flex; 
+            background-color: #f0f8ff; /* Light blue background color */
+            color: #333; /* Dark text color for contrast */
+        }
+        /* Vertical Menu Styling */
+        .menu {
+            width: 220px;
+            background-color: #333; /* Dark background for the menu */
+            padding: 20px;
+            height: 100vh; /* Full viewport height */
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: fixed; /* Fix menu position */
+            top: 0;
+            left: 0;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2); /* Shadow for depth */
+            border-radius: 0 10px 10px 0; /* Rounded right edge */
+            transition: transform 0.3s ease; /* Smooth sliding effect */
+        }
+        .menu.hidden {
+            transform: translateX(-220px); /* Hide menu by moving it off-screen */
+        }
+        .menu h2 {
+            font-size: 1.5em;
+            margin-bottom: 20px;
+            color: #ffd700; /* Gold color for the heading */
+        }
+        .menu a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            margin: 10px 0;
+            padding: 10px 15px;
+            width: 100%;
+            text-align: center;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s; /* Smooth hover effect */
+        }
+        .menu a:hover {
+            background-color: #555; /* Darker shade on hover */
+            color: #ffd700; /* Gold color on hover */
+        }
+        /* Content Styling */
+        .container { 
+            margin-left: 240px; /* Space for the menu */
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            padding: 50px; 
+        }
+        .toggle-btn {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1000;
+            padding: 10px 15px;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .intro { 
+            max-width: 600px; 
+            margin-bottom: 30px; 
+            font-size: 1.1em; 
+        }
+        .card { 
+            margin: 20px; 
+            padding: 20px; 
+            border: 1px solid #ccc; 
+            border-radius: 8px; 
+            width: 200px; 
+            text-align: center; 
+            background-color: #fff; /* White background for contrast */
+        }
+        .card a { 
+            text-decoration: none; 
+            color: #333; 
+            font-weight: bold; 
+        }
+        .image-placeholder { 
+            width: 100%; 
+            height: auto; 
+            max-width: 200px; 
+            margin-top: 20px; 
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Toggle Button -->
+    <button class="toggle-btn" onclick="toggleMenu()">☰ Menu</button>
+
+    <!-- Vertical Menu -->
+    <div class="menu" id="sideMenu">
+        <h2>Navigation</h2>
+        <a href="index.html">Home</a>
+        <a href="driver.html">Driver Sign-Up</a>
+        <a href="owner.html">Car Owner Sign-Up</a>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container">
+        <h1>Welcome to the Driver-Car Owner Connection</h1>
+
+        <!-- Introduction Section -->
+        <div class="intro">
+            <p>Our platform connects drivers with car owners for seamless collaboration. Whether you are a driver looking for opportunities or a car owner seeking a reliable driver, we aim to make the process easy and efficient.</p>
+            <p>Select your role below to get started, and let us help you find the perfect match for your needs.</p>
+        </div>
+
+        <img src="https://via.placeholder.com/200" alt="Home Page Image" class="image-placeholder">
+
+        <div class="card">
+            <a href="driver.html">I am a Driver</a>
+        </div>
+        <div class="card">
+            <a href="owner.html">I am a Car Owner</a>
+        </div>
+    </div>
+
+    <!-- JavaScript for Toggling Menu -->
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById("sideMenu");
+            menu.classList.toggle("hidden");
+        }
+    </script>
+</body>
+</html>
